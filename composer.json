@@ -1,0 +1,11 @@
+{
+    "require": {
+        "phpoffice/phpword": "v0.12.1"
+    },
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
+        }
+    }
+}

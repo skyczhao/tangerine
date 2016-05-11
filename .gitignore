@@ -1,0 +1,8 @@
+
+# ignore composer auto folder
+vendor
+composer.phar
+composer.lock
+
+# ignore hidden files
+.*
