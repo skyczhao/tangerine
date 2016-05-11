@@ -6,7 +6,7 @@ tangerine
 prepare
 -----
 0. composer setup
-    `curl -sS https://getcomposer.org/installer | php` or
-    `php -r "readfile(https://getcomposer.org/installer);" | php`
+    * `curl -sS https://getcomposer.org/installer | php`
+    * `php -r "readfile(https://getcomposer.org/installer);" | php`
 1. find dependencies
-    `php composer.phar install`
+    * `php composer.phar install`

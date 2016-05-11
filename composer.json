@@ -2,6 +2,11 @@
     "require": {
         "phpoffice/phpword": "v0.12.1"
     },
+    "autoload": {
+        "psr-4": {
+            "Tangerine\\": "src/"
+        }
+    },
     "repositories": {
         "packagist": {
             "type": "composer",
