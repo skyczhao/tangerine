@@ -13,11 +13,11 @@ class Commons
     public static function getConfig()
     {
         return array(
-            "DB_HOST" => "[HOST]",
-            "DB_PORT" => "[PORT]",
-            "DB_USER" => "[USERNAME]",
-            "DB_PASS" => "[PASSWORD]",
-            "DB_NAME" => "[DATABASE]"
+            "DB_HOST" => "127.0.0.1",
+            "DB_PORT" => "3306",
+            "DB_USER" => "root",
+            "DB_PASS" => "",
+            "DB_NAME" => "printit"
         );
     }
 

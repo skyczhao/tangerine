@@ -1,17 +1,16 @@
 <?php
 
-namespace Utils;
-
-require_once(dirname(__FILE__).'/../root.php');
-
-use Utils\Database;
-
 /**
  * Created by PhpStorm.
  * User: tobin
  * Date: 15/9/27
  * Time: 上午8:48
  */
+
+namespace Tangerine\Utils;
+
+use Tangerine\Utils\Database;
+
 class Model
 {
     protected $db        = null;
