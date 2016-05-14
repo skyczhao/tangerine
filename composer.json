@@ -7,14 +7,16 @@
     },
     "require": {
         "php": ">=5.3.3",
-        "phpoffice/phpword": "v0.12.1"
+        "phpoffice/phpword": "v0.12.1",
+        "analog/analog": "1.0.7"
     },
     "require-dev": {
         "phpunit/phpunit": "4.8.24"
     },
     "autoload": {
         "psr-4": {
-            "Tangerine\\": "src/"
+            "Tangerine\\": "src/",
+            "Tangerine\\Tests\\": "tests/"
         }
     },
     "repositories": {
