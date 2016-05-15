@@ -8,10 +8,16 @@
 
 namespace Tangerine\Parser;
 
+use PhpOffice\PhpWord\IOFactory;
 
 class WordParser
 {
     public static function show() {
         echo "Hello World";
+    }
+
+    public static function readDocx($path) {
+        $phpWord = IOFactory::load($path);
+        return $phpWord;
     }
 }
