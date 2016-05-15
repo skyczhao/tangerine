@@ -7,7 +7,7 @@
  * Time: 上午8:48
  */
 
-namespace Tangerine\Utils;
+namespace Tangerine\Model;
 
 use Tangerine\Utils\Database;
 
@@ -24,15 +24,16 @@ class Model
         $classIdParts    = explode("\\", $classId);
         $classIdLength   = count($classIdParts);
         $className       = strtolower($classIdParts[$classIdLength - 1]);
-        $classLength     = strlen($className);
+//        $classLength     = strlen($className);
 
-        $this->db        = Database::get_instance();
-        $this->tableName = substr($className, 0, $classLength - 5);
+        $this->db        = Database::getInstance();
+        $this->tableName = $className;
+
     }
 
-    final public function get_fields() {
+    final public function getFields() {
         if (empty($this->tableName)) {
-            return null;
+            return 1;
         }
 
         if (count($this->fields)) {
@@ -40,7 +41,7 @@ class Model
         }
 
         // 获取字段名
-        $this->fields = $this->db->get_table_fields($this->tableName);
+        $this->fields = $this->db->getTableFields($this->tableName);
         return $this->fields;
     }
 
@@ -105,12 +106,12 @@ class Model
         return $this;
     }
 
-    public function get_error() {
-        return $this->db->get_error();
+    public function getError() {
+        return $this->db->getError();
     }
 
-    public function get_insert_id() {
-        return $this->db->get_insert_id();
+    public function getInsertId() {
+        return $this->db->getInsertId();
     }
 
     public function insert($array) {
@@ -134,11 +135,11 @@ class Model
         return $this->db->delete($sql);
     }
 
-    public function construct_update_pairs($array) {
+    public function genUpdatePairs($array) {
         $pairs = '';
         // 构造参数
         foreach ($array as $key => $value) {
-            if (!empty($pairs)) $pairs = "$pairs, ";
+            if (!empty($pairs)) $pairs = "$pairs,";
 
             if (!is_array($value)) {
                 $pairs = "$pairs `$key`='$value'";
@@ -153,7 +154,7 @@ class Model
     }
 
     public function update($array) {
-        $pairs = $this->construct_update_pairs($array);
+        $pairs = $this->genUpdatePairs($array);
 
         $sql = "UPDATE `$this->tableName` SET $pairs WHERE $this->condition;";
         return $this->db->update($sql);
@@ -169,8 +170,8 @@ class Model
         return $this->db->count($sql);
     }
 
-    public function atomic_update($array) {
-        $pairs = $this->construct_update_pairs($array);
+    public function atomicUpdate($array) {
+        $pairs = $this->genUpdatePairs($array);
 
         // 开启事务
         $this->db->begin();
